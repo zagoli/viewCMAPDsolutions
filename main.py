@@ -96,7 +96,6 @@ if __name__ == '__main__':
     my_map = import_map('env/grid.map')
     # starts, goals, paths = parse_rmca_file('env/rmca.txt')
     starts, goals, paths = parse_model_files('env/model.txt', 'env/latest_pbs_instance_paths.txt')
-    print(paths)
     animation = Animation(my_map, starts, goals, paths)
     animation.show()
     # animation.save('video.mp4', 100)
