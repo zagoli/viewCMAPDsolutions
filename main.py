@@ -81,14 +81,14 @@ def parse_model_files(assignment_filename, paths_filename):
                 line = line[3:]
                 goals.append(ast.literal_eval(line))
     with open(pf, 'r') as f:
+        f.readline()
         while line := f.readline():
-            if line.startswith('§'):
-                line = line.split(',')
-                line = ",".join(line[2:])
-                line = line.replace('->', ',').strip('\n')
-                line = '[' + line + ']'
-                path = (ast.literal_eval(line))
-                paths.append(path)
+            line = line.split(',')
+            line = ",".join(line[2:])
+            line = line.replace('->', ',').strip('\n')
+            line = '[' + line + ']'
+            path = (ast.literal_eval(line))
+            paths.append(path)
     return starts, goals, paths
 
 
@@ -96,6 +96,7 @@ if __name__ == '__main__':
     my_map = import_map('env/grid.map')
     # starts, goals, paths = parse_rmca_file('env/rmca.txt')
     starts, goals, paths = parse_model_files('env/model.txt', 'env/latest_pbs_instance_paths.txt')
+    print(paths)
     animation = Animation(my_map, starts, goals, paths)
     animation.show()
     # animation.save('video.mp4', 100)
