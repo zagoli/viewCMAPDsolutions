@@ -94,8 +94,8 @@ def parse_model_files(assignment_filename, paths_filename):
 
 if __name__ == '__main__':
     my_map = import_map('env/grid.map')
-    starts, goals, paths = parse_rmca_file('env/rmca.txt')
-    # starts, goals, paths = parse_model_files('env/model.txt', 'env/latest_pbs_instance_paths.txt')
+    # starts, goals, paths = parse_rmca_file('env/rmca.txt')
+    starts, goals, paths = parse_model_files('env/model.txt', 'env/latest_pbs_instance_paths.txt')
     animation = Animation(my_map, starts, goals, paths)
     animation.show()
     # animation.save('video.mp4', 100)
