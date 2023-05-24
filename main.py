@@ -81,14 +81,14 @@ def parse_model_files(assignment_filename, paths_filename):
                 line = line[3:]
                 goals.append(ast.literal_eval(line))
     with open(pf, 'r') as f:
-        f.readline()
         while line := f.readline():
-            line = line.split(',')
-            line = ",".join(line[2:])
-            line = line.replace('->', ',').strip('\n')
-            line = '[' + line + ']'
-            path = (ast.literal_eval(line))
-            paths.append(path)
+            if line.startswith('§'):
+                line = line.split(',')
+                line = ",".join(line[2:])
+                line = line.replace('->', ',').strip('\n')
+                line = '[' + line + ']'
+                path = (ast.literal_eval(line))
+                paths.append(path)
     return starts, goals, paths
 
 
